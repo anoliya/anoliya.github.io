@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="相约星期六重播时间查询 - 提供江苏卫视《相约星期六》最新一期及往期节目播出时间表、重播频道、在线观看入口及精彩看点汇总。">
+    <meta name="keywords" content="相约星期六, 相约星期六重播时间, 江苏卫视, 综艺节目, 约会节目">
+    <title>相约星期六重播时间-江苏卫视最新节目播出指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e60012;
+            --secondary-color: #ff4d4d;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e1e1e1;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff0f0 0%, #fff 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Schedule Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 6px;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .schedule-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .schedule-header {
+            background-color: #fff5f5;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .program-info h3 {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .program-meta {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .tag {
+            background-color: #ffebeb;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .schedule-body {
+            padding: 24px;
+        }
+
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: border-color 0.2s;
+        }
+
+        .schedule-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .time {
+            min-width: 100px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        .channel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .channel-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .status {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .status.live {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .episode-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .episode-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .episode-link {
+            display: block;
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .episode-link:hover {
+            color: var(--primary-color);
+        }
+
+        .episode-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .info-card h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b2b2b;
+            color: #ccc;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-col h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .status {
+                margin-left: 0;
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                <span>相约星期六</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">重播时间</a></li>
+                    <li><a href="#">往期精彩</a></li>
+                    <li><a href="#">节目看点</a></li>
+                    <li><a href="#">关于节目</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>相约星期六重播时间查询</h1>
+                <p>获取江苏卫视《相约星期六》最新一期及往期节目的播出时刻表，不错过任何一期精彩内容。</p>
+                <div>
+                    <a href="#schedule" class="btn">查看最新排期</a>
+                    <a href="#" class="btn btn-outline">观看直播/回放</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" id="schedule">
+            <!-- Main Content: Schedule -->
+            <section class="schedule-section">
+                <div class="section-header">
+                    <h2 class="section-title">最新播出排期</h2>
+                    <div style="font-size: 14px; color: var(--text-light);">
+                        当前显示：<span style="color: var(--text-main); font-weight: 600;">2023年10月</span>
+                    </div>
+                </div>
+
+                <!-- Card 1: Current Episode -->
+                <article class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="program-info">
+                            <h3>相约星期六 第20231028期</h3>
+                            <div class="program-meta">
+                                <span class="tag">正在播出</span>
+                                <span>类型：恋爱交友/综艺</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 12px; color: #999;">预计时长</div>
+                            <div style="font-weight: 600;">90 分钟</div>
+                        </div>
+                    </div>
+                    <div class="schedule-body">
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="time">周六 21:00</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status live">直播中</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="time">周日 14:30</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status">重播</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="time">周一 13:00</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status">重播</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: Previous Episode -->
+                <article class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="program-info">
+                            <h3>相约星期六 第20231021期</h3>
+                            <div class="program-meta">
+                                <span class="tag">已结束</span>
+                                <span>类型：恋爱交友/综艺</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-body">
+                        <div class="schedule-list">
+                            <div class="schedule-item">
+                                <div class="time">上周六 21:00</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status">已播出</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="time">上周日 14:30</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status">重播</div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="time">上周一 13:00</div>
+                                <div class="channel">
+                                    <div class="channel-icon">JS</div>
+                                    江苏卫视
+                                </div>
+                                <div class="status">重播</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>📺 观看渠道</h4>
+                        <p>除了江苏卫视直播，您还可以通过“荔枝新闻”APP、江苏卫视官方YouTube频道以及各大视频平台（如腾讯视频、爱奇艺）搜索“相约星期六”观看高清回放。</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>⏰ 更新规律</h4>
+                        <p>节目通常于每周六晚黄金档首播。首播后次日（周日）下午及次日上午会有固定的重播时段，具体时间请以当期节目单为准。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside>
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">近期热门期数</h3>
+                    <ul class="episode-list">
+                        <li>
+                            <a href="#" class="episode-link">第20231021期：心动信号</a>
+                            <span class="episode-date">2023-10-21</span>
+                        </li>
+                        <li>
+                            <a href="#" class="episode-link">第20231014期：缘来是你</a>
+                            <span class="episode-date">2023-10-14</span>
+                        </li>
+                        <li>
+                            <a href="#" class="episode-link">第20230707期：夏日特别企划</a>
+                            <span class="episode-date">2023-07-07</span>
+                        </li>
+                        <li>
+                            <a href="#" class="episode-link">第20230630期：缘分测试</a>
+                            <span class="episode-date">2023-06-30</span>
+                        </li>
+                    </ul>
+                    <a href="#" style="display: block; margin-top: 15px; text-align: center; color: var(--primary-color); font-weight: 600; font-size: 14px;">查看全部期数 &rarr;</a>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">节目简介</h3>
+                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.8;">
+                        《相约星期六》是江苏卫视的一档大型生活服务类综艺娱乐节目，旨在为单身男女提供交友平台，通过游戏互动和才艺展示，帮助嘉宾寻找属于自己的爱情。
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col" style="flex: 2; min-width: 300px;">
+                <h5>相约星期六重播时间查询</h5>
+                <p style="font-size: 14px; color: #999; max-width: 400px;">
+                    本站致力于提供最准确、最及时的《相约星期六》节目播出信息。所有节目时间仅供参考，具体请以江苏卫视官方发布的当期节目单为准。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h5>快速链接</h5>
+                <ul>
+                    <li><a href="#">江苏卫视官网</a></li>
+                    <li><a href="#">荔枝新闻</a></li>
+                    <li><a href="#">节目投稿</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>帮助中心</h5>
+                <ul>
+                    <li><a href="#">如何观看回放</a></li>
+                    <li><a href="#">节目规则说明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 相约星期六信息查询站. All Rights Reserved. 非江苏卫视官方网站.
+        </div>
+    </footer>
+
+</body>
+</html>
